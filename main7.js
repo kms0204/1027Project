@@ -1,5 +1,6 @@
 const express = require('express')
 const fs = require('fs')
+const qs = require('querystring')
 const template = require('./lib/template.js')
 const app = express()
 const port = 8080 
@@ -41,7 +42,7 @@ app.get('/update', (req,res)=>{
         fs.readFile(`page/${name}`, 'utf8', (err,content)=>{
             let control = `<a href='/create'>New_Schedule</a> <a href='/update?name=${name}'>Update_Schedule</a>
             <form action='delete_process' method='post'>
-                <input type='hidden' name ='id' value='${name}'>
+                <input name ='id' value='${name}'>
                 <button type='submit'>Delete_Schedule</button>
             </form>
             `
@@ -52,7 +53,6 @@ app.get('/update', (req,res)=>{
     })
 })
 
-const qs = require('querystring')
 app.post('/create_process', (req,res)=>{
     let body = ''
     req.on('data', (data)=>{
