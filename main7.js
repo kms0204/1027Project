@@ -12,7 +12,8 @@ app.get('/', (req,res)=>{
         fs.readFile(`page/${name}`, 'utf8', (err,data)=>{
             let control = `<a href='/create'>New_Schedule</a> <a href='/update?name=${name}'></a>
             <form action='delete_process' method='post'>
-                <input name ='id' value='${name}'>
+                <input type='hidden' name ='id' value='${name}'>
+                <a href='/update'>Update_Schedule</a>
                 <button type='submit'>Delete_Schedule</button>
             </form>
             `
@@ -42,7 +43,7 @@ app.get('/update', (req,res)=>{
         fs.readFile(`page/${name}`, 'utf8', (err,content)=>{
             let control = `<a href='/create'>New_Schedule</a> <a href='/update?name=${name}'>Update_Schedule</a>
             <form action='delete_process' method='post'>
-                <input name ='id' value='${name}'>
+                <input type='hidden' name ='id' value='${name}'>
                 <button type='submit'>Delete_Schedule</button>
             </form>
             `
