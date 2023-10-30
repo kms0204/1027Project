@@ -20,7 +20,7 @@ app.get('/', (req,res)=>{
             if(name === undefined){
                 name = 'Schedule'
                 data = 'Management'
-                control = `<a href='/create'>Create_Schedule</a>`    
+                control = `<a href='/create'>Create_Schedule</a> <a href='/update'>Update_Schedule</a>`    
             }
             const html = template.HTML(name, list, `<h2>${name} Management</h2><p>${data}</p>`, control) 
         res.send(html)
