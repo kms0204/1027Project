@@ -10,7 +10,7 @@ app.get('/', (req,res)=>{
     fs.readdir('page', (err,files)=>{
         let list = template.list(files)
         fs.readFile(`page/${name}`, 'utf8', (err,data)=>{
-            let control = `<a href='/create'>New_Schedule</a> <a href='/update?name=${name}'></a>
+            let control = `<a href='/create'>New_Schedule</a> <a href='/update?name=${name}'>update</a>
             <form action='delete_process' method='post'>
                 <input name ='id' value='${name}'>
                 <a href='/update'>Update_Schedule</a>
