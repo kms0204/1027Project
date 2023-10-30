@@ -10,17 +10,16 @@ app.get('/', (req,res)=>{
     fs.readdir('page', (err,files)=>{
         let list = template.list(files)
         fs.readFile(`page/${name}`, 'utf8', (err,data)=>{
-            let control = `<a href='/create'>New_Schedule</a> <a href='/update'>update</a>
+            let control = `<a href='/create'>New_Schedule</a> <a href='/update?name=${name}'>Update_Schedule</a>
             <form action='delete_process' method='post'>
-                <input name ='id' value='${name}'>
-                <a href='/update'>Update_Schedule</a>
+                <input type='hidden' name ='id' value='${name}'>
                 <button type='submit'>Delete_Schedule</button>
             </form>
             `
             if(name === undefined){
                 name = 'Schedule'
                 data = 'Management'
-                control = `<a href='/create'>Create_Schedule</a> <a href='/update'>Update_Schedule</a>`    
+                control = `<a href='/create'>Create_Schedule</a>`    
             }
             const html = template.HTML(name, list, `<h2>${name} Management</h2><p>${data}</p>`, control) 
         res.send(html)
@@ -43,7 +42,7 @@ app.get('/update', (req,res)=>{
         fs.readFile(`page/${name}`, 'utf8', (err,content)=>{
             let control = `<a href='/create'>New_Schedule</a> <a href='/update?name=${name}'>Update_Schedule</a>
             <form action='delete_process' method='post'>
-                <input name ='id' value='${name}'>
+                <input type='hidden' name ='id' value='${name}'>
                 <button type='submit'>Delete_Schedule</button>
             </form>
             `
