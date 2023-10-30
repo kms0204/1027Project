@@ -12,7 +12,7 @@ app.get('/', (req,res)=>{
         fs.readFile(`page/${name}`, 'utf8', (err,data)=>{
             let control = `<a href='/create'>New_Schedule</a> <a href='/update?name=${name}'></a>
             <form action='delete_process' method='post'>
-                <input type='hidden' name ='id' value='${name}'>
+                <input name ='id' value='${name}'>
                 <button type='submit'>Delete_Schedule</button>
             </form>
             `
